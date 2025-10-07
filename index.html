@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>抽奖小程序</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>抽奖系统 🎉</h1>
+      <p class="subtitle">支持导入参与者、设置奖项、抽取并导出中奖名单</p>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="card">
+          <h2>参与者（CSV / 手动）</h2>
+          <textarea id="participantsArea" placeholder="每行一个姓名，格式：姓名,备注（可选）"></textarea>
+          <div class="row">
+            <input type="file" id="csvFile" accept=".csv">
+            <button id="btnImport">导入</button>
+            <button id="btnClearList">清空名单</button>
+          </div>
+          <p class="muted">CSV 支持两列：姓名,备注 或 单列姓名</p>
+        </div>
+
+        <div class="card">
+          <h2>奖项设置</h2>
+          <div id="prizeList"></div>
+          <div class="row">
+            <input id="prizeName" placeholder="奖项名称（例：一等奖）">
+            <input id="prizeCount" type="number" min="1" placeholder="数量" style="width:100px">
+            <button id="btnAddPrize">添加奖项</button>
+          </div>
+          <label class="muted"><input type="checkbox" id="allowRepeat"> 允许重复中奖</label>
+        </div>
+
+        <div class="card">
+          <h2>管理</h2>
+          <div class="row">
+            <button id="btnShowAdmin">打开管理面板</button>
+            <button id="btnExportAll">导出所有数据（CSV）</button>
+          </div>
+          <p class="muted">中奖数据保存在浏览器本地（localStorage）。</p>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="card big">
+          <h2>抽奖区</h2>
+          <div class="controls">
+            <select id="selectPrize"></select>
+            <button id="btnDraw" class="bigbtn">开始抽奖</button>
+          </div>
+
+          <div id="display" class="display">
+            <div id="currentName" class="current">—</div>
+            <div id="currentNote" class="note"></div>
+          </div>
+
+          <div class="result-card">
+            <h3>中奖名单</h3>
+            <ol id="winners"></ol>
+            <div class="row">
+              <button id="btnExportWinners">导出中奖名单</button>
+              <button id="btnResetWinners">清空中奖名单</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 管理面板模态 -->
+  <div id="adminModal" class="modal">
+    <div class="modal-content">
+      <h3>管理面板</h3>
+      <p>密码：</p>
+      <input id="adminPwd" type="password" placeholder="输入密码（默认: 1234）">
+      <div class="row">
+        <button id="btnLogin">登录</button>
+        <button id="btnCloseAdmin">关闭</button>
+      </div>
+
+      <hr>
+      <h4>强制操作</h4>
+      <div class="row">
+        <button id="btnForceClearStorage">清空 localStorage（危险）</button>
+        <button id="btnLoadSample">加载示例名单</button>
+      </div>
+      <p class="muted">谨慎操作：清空 localStorage 会删除所有已保存数据。</p>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
