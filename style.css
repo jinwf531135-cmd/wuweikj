@@ -1,0 +1,28 @@
+:root{--bg:#f5f7fb;--card:#fff;--accent:#ff6f61;--muted:#666}
+*{box-sizing:border-box}
+body{font-family:Inter, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#222}
+.container{max-width:1100px;margin:20px auto;padding:12px}
+header{text-align:center;margin-bottom:12px}
+.subtitle{color:var(--muted);margin-top:6px}
+main{display:flex;gap:16px}
+.left{width:360px}
+.right{flex:1}
+.card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 4px 18px rgba(20,20,30,0.06);margin-bottom:16px}
+.card.big{min-height:520px;display:flex;flex-direction:column;justify-content:flex-start}
+textarea{width:100%;height:140px;padding:10px;border-radius:8px;border:1px solid #e0e6ef;resize:vertical}
+.row{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+input[type=text], input[type=number], input[type=password], select{padding:8px;border-radius:8px;border:1px solid #e0e6ef}
+button{background:var(--accent);color:#fff;padding:8px 12px;border:none;border-radius:8px;cursor:pointer}
+button.bigbtn{padding:12px 20px;font-size:18px}
+button:disabled{opacity:.6;cursor:not-allowed}
+.muted{color:var(--muted);font-size:13px}
+.display{margin-top:18px;background:#111;color:#fff;border-radius:10px;padding:20px;text-align:center}
+.current{font-size:36px;font-weight:700}
+.note{font-size:14px;color:#ddd;margin-top:6px}
+.result-card{margin-top:16px;padding:12px;background:#fbfbfe;border-radius:8px}
+ol{padding-left:20px}
+.modal{display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.45);align-items:center;justify-content:center}
+.modal-content{background:#fff;padding:16px;border-radius:10px;width:420px}
+#prizeList .prize-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:#fff;margin-top:8px;border:1px solid #eef2ff}
+.small{font-size:12px;padding:6px 8px}
+@media(max-width:900px){main{flex-direction:column}.left{width:100%}}
